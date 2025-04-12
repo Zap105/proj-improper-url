@@ -17,9 +17,12 @@
           <td><%= quiz.title %></td>
           <td><%= quiz.description %></td>
           <td class="text-nowrap">
-            <%= link_to 'show', quiz_path(quiz), class: 'btn btn-sm btn-outline-primary' %>
-            <%= link_to 'edit', edit_quiz_path(quiz), class: 'btn btn-sm btn-outline-primary' %>
-            <%= button_to 'destroy', quiz_path(quiz), method: :delete, data: { turbo: false }, class: 'btn btn-sm btn-outline-primary', form: { class: 'd-inline' } %>
+            <% if current_user %>
+              <%= link_to 'show', quiz_path(quiz), class: 'btn btn-sm btn-outline-primary' %>
+              <%= link_to 'edit', edit_quiz_path(quiz), class: 'btn btn-sm btn-outline-primary' %>
+              <%= button_to 'destroy', quiz_path(quiz), method: :delete, data: { turbo: false }, class: 'btn btn-sm btn-outline-primary', form: { class: 'd-inline' } %>
+            <% else %>
+            <% end %>
           </td>
         </tr>
       <% end %>
