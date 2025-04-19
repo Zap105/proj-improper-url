@@ -9,8 +9,15 @@
 #  title       :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  user_id     :integer
 #
 class Quiz < ApplicationRecord
+  belongs_to(
+    :user,
+    class_name:  'User',
+    foreign_key: 'user_id',
+    inverse_of:  :quizzes
+  )
   has_many(
     :questions,
     class_name:  'Question',

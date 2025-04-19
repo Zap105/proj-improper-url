@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class QuizzesController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authorize_quiz_owner, only: [:edit, :update, :destroy]
+
   def index
     @quizzes = Quiz.all
     render :index
@@ -23,7 +24,7 @@ class QuizzesController < ApplicationController
   end
 
   def create
-    @quiz = Quiz.new(params.require(:quiz).permit(:title, :description))
+    @quiz = current_user.quizzes.new(params.require(:quiz).permit(:title, :description))
     if @quiz.save
       flash[:success] = 'New quiz successfully created!'
       redirect_to quizzes_url
