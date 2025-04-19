@@ -1,24 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To access changes mentioned in report,switch to user-based-restriction branch.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+main:                   base application
+incorrect-restriction:  faulty access restriction - only hides buttons, URLs still exposed
+partial-restriciton:    URLs no longer exposed, but any user can edit any quiz
+user-based-restriction: Only user who made quiz can edit or delete said quiz
